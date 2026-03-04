@@ -1,0 +1,59 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: doctor-service
+          uri: lb://DOCTOR-SERVICE
+          predicates:
+            - Path=/doctors/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: patient-service
+          uri: lb://PATIENT-SERVICE
+          predicates:
+            - Path=/api/appointments/**, /api/patients/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: message-service
+          uri: lb://PATIENT-SERVICE
+          predicates:
+            - Path=/api/messages/**
+          filters:
+            - name: AuthenticationFilter
+
+
+        - id: admin-service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - name: AuthenticationFilter
+
+        - id: ai-service
+          uri: lb://AI-SERVICE
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - name: AuthenticationFilter
+
+jwt:
+  secret: ${JWT_SECRET:change-me-to-a-secure-secret-key-at-least-256-bits}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

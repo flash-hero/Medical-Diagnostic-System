@@ -1,0 +1,221 @@
+.chatbot-container {
+  background: #FDF8F4;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(42, 26, 18, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  max-height: 800px;
+  overflow: hidden;
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, #8B0909 0%, #6B0707 100%);
+  color: #EDD9CC;
+  padding: 20px 24px;
+  border-radius: 16px 16px 0 0;
+}
+
+.chatbot-header-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bot-avatar {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.bot-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  background: linear-gradient(135deg, #F5EDE6 0%, #E8D8C8 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chatbot-message {
+  display: flex;
+  gap: 12px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.chatbot-message.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #8B0909 0%, #C4A882 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #EDD9CC;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 14px 18px;
+  border-radius: 16px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.chatbot-message.bot .message-bubble {
+  background: #FDF8F4;
+  color: #2A1A12;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.chatbot-message.user .message-bubble {
+  background: linear-gradient(135deg, #8B0909 0%, #C4A882 100%);
+  color: #EDD9CC;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(139, 9, 9, 0.3);
+}
+
+.message-bubble p {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.message-time {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.message-bubble.typing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8B0909;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  padding: 16px 24px;
+  overflow-x: auto;
+  background: #FDF8F4;
+  border-top: 1px solid #E8D8C8;
+}
+
+.quick-action-btn {
+  padding: 8px 16px;
+  background: #E8D8C8;
+  color: #8B0909;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.quick-action-btn:hover {
+  background: #8B0909;
+  color: #EDD9CC;
+  transform: translateY(-2px);
+}
+
+.chatbot-input-container {
+  padding: 20px 24px;
+  background: #FDF8F4;
+  border-top: 1px solid #E8D8C8;
+  display: flex;
+  gap: 12px;
+  border-radius: 0 0 16px 16px;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 2px solid #E8D8C8;
+  border-radius: 24px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #F5EDE6;
+}
+
+.chatbot-input:focus {
+  background: #FDF8F4;
+  border-color: #8B0909;
+  box-shadow: 0 0 0 3px rgba(139, 9, 9, 0.1);
+}
+
+.chatbot-send-btn {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #8B0909 0%, #6B0707 100%);
+  color: #EDD9CC;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.chatbot-send-btn:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(139, 9, 9, 0.4);
+}
+
+.chatbot-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .chatbot-container {
+    height: calc(100vh - 100px);
+  }
+  
+  .message-bubble {
+    max-width: 85%;
+  }
+}

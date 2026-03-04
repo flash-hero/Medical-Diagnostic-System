@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #8B0909;
+  --primary-dark: #6B0707;
+  --primary-light: rgba(139, 9, 9, 0.08);
+  --accent: #C4A882;
+  --accent-dark: #A08870;
+  --bg: #EDD9CC;
+  --bg-light: #F5EDE6;
+  --surface: #FDF8F4;
+  --white: #FFFFFF;
+  --text: #2A1A12;
+  --text-secondary: #6B5040;
+  --text-muted: #8B7560;
+  --border: #D4BFA8;
+  --border-light: #E8D8C8;
+  --success-green: #2D7A3A;
+  --warning-yellow: #B8860B;
+  --red-accent: #9B1C1C;
+
+  /* Legacy aliases */
+  --primary-blue: #8B0909;
+  --secondary-blue: #C4A882;
+  --light-blue: rgba(139, 9, 9, 0.06);
+  --dark-blue: #6B0707;
+  --light-gray: #F5EDE6;
+  --gray: #8B7560;
+  --dark-gray: #6B5040;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* ═══════════════════════════════════════
+   SCROLLBAR — Warm toned
+   ═══════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e0ccbc;
+  border-left: 1px solid #d4bfad;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 9, 9, 0.2);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 9, 9, 0.4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 9, 9, 0.2) #e0ccbc;
+}
+
+/* ═══════════════════════════════════════
+   SELECTION
+   ═══════════════════════════════════════ */
+
+::selection {
+  background: rgba(139, 9, 9, 0.15);
+  color: #2a1010;
+}
+
+/* ═══════════════════════════════════════
+   SMOOTH SCROLLING
+   ═══════════════════════════════════════ */
+
+html {
+  scroll-behavior: auto;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #EDD9CC;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 9, 9, 0.3);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: var(--red-accent);
+  color: var(--white);
+}
+
+.btn-danger:hover {
+  background: #7A1616;
+  transform: translateY(-2px);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 6px rgba(42, 26, 18, 0.04);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(42, 26, 18, 0.08);
+  transform: translateY(-4px);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 9.5px 16px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: var(--white);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(139, 9, 9, 0.08);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
